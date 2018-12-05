@@ -123,6 +123,7 @@ public class Main {
                         }
                     }
                     fos.write("\n".getBytes());
+                    fos.flush();
                 }
             }
         } catch (IOException e) {
