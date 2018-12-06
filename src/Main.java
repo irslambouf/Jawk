@@ -96,9 +96,10 @@ public class Main {
 
             for (String inFileName : fileNames) {
                 FileAndFolderReaderBinaryV2 readerBinaryV2 = new FileAndFolderReaderBinaryV2(inFileName);
-
+                int count = 0;
                 byte[] line;
                 while ((line = readerBinaryV2.readLine()) != null) {
+                    count++;
                     UtilBytes uLine = new UtilBytes(line);
 
                     ArrayList<Integer> indexes = uLine.getAllIndexes(delimiter);
