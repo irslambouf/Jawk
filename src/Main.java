@@ -104,7 +104,7 @@ public class Main {
 
                     ArrayList<Integer> indexes = uLine.getAllIndexes(delimiter);
 
-                    if (largestColumn > indexes.size()) {
+                    if (largestColumn -1 > indexes.size()) {
                         System.err.println("Output column is larger column in line");
                         System.err.println(uLine.toString());
                         continue;
@@ -115,8 +115,14 @@ public class Main {
 
                         if (column == 0) {
                             fos.write(uLine.getBytesOfRange(0, indexes.get(0)));
-                        } else {
+                        }
+
+                        if (column > 0 && column < indexes.size()){
                             fos.write(uLine.getBytesOfRange(indexes.get(column - 1) + delimiter.length, indexes.get(column)));
+                        }
+
+                        if (column == indexes.size()){
+                            fos.write(uLine.getBytesOfRange(indexes.get(indexes.size() - 1) + delimiter.length, uLine.size() - 1));
                         }
 
                         if (i != columns.size() - 1) {
